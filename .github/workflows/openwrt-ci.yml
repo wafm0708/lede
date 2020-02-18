@@ -13,9 +13,9 @@ on:
   push:
     branches: 
       - master
-   schedule:
+  schedule:
      - cron: 0 20 * * *
-   release:
+  release:
      types: [published]
 
 jobs:
@@ -58,7 +58,7 @@ jobs:
         run: |
           rm -f ./.config*
           touch ./.config
-	  - name: 同步最新的源码
+      - name: 同步最新的源码
         run: |
           git remote add openwrt https://github.com/coolsnowwolf/lede.git
           git pull openwrt master
@@ -102,9 +102,9 @@ jobs:
           # CONFIG_TARGET_IMAGES_GZIP=y
           # EOF
           # 编译UEFI固件:
-          # cat >> .config <<EOF
-          # CONFIG_EFI_IMAGES=y
-          # EOF
+           cat >> .config <<EOF
+           CONFIG_EFI_IMAGES=y
+           EOF
           # IPv6支持:
            cat >> .config <<EOF
            CONFIG_PACKAGE_dnsmasq_full_dhcpv6=y
